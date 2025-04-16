@@ -1,16 +1,22 @@
 {
-  
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ],
-  "compilerOptions": {
+  "compilerOptions": { 
+        "moduleResolution": "node",
+        "module": "esnext",
+        "target": "esnext",
+        "jsx": "preserve",
+        "strict": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "sourceMap": true,
+        "resolveJsonModule": true,
+        "lib": ["esnext", "dom"],
         "baseUrl": "./",
-        "paths": {
-            "@/*": [
-                "src/*"
-            ]
+        "paths": { 
+          "@/*": ["src/*"]
         }
-  }
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/**/*.d.ts", "src/directive/index.js"],
+  "exclude": ["node_modules"]
+
+
 }

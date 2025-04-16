@@ -37,15 +37,15 @@
             <div class="container">
                 <div class="slogan">
                     <a href="javascript:;">
-                        <i class="iconfont icon-footer01"></i>
+                        <i class="iconfont"></i>
                         <span>价格亲民</span>
                     </a>
                     <a href="javascript:;">
-                        <i class="iconfont icon-footer02"></i>
+                        <i class="iconfont"></i>
                         <span>物流快捷</span>
                     </a>
                     <a href="javascript:;">
-                        <i class="iconfont icon-footer03"></i>
+                        <i class="iconfont"></i>
                         <span>品质新鲜</span>
                     </a>
                 </div>

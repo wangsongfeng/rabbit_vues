@@ -55,3 +55,21 @@ margin-left 和 margin-right 设置为 auto
 
 9、行内块元素适用vertical-align属性，图片、表单都属于行内块元素，默认的 vertical-align 是基线对齐。
 此时可以给图片、表单这些行内块元素的 vertical-align 属性设置为 middle 就可以让文字和图片垂直 居中对齐了。
+
+
+
+
+常规报错处理
+
+vue3在引入组件时报'has no default export'
+
+禁用 Vetur 的脚本验证
+- 在 VS Code 的 `settings.json` 文件中添加以下配置：
+  ```json
+  { 
+    "vetur.validation.script": false
+  }
+
+
+  router.replace({path:'/'})
+  解释 ： router.replace 不会向浏览器的历史记录中添加新记录，而是替换掉当前的历史记录。这意味着用户在导航后使用浏览器的后退按钮将不会返回到先前的页面。
