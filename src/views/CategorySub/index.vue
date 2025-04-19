@@ -24,7 +24,9 @@
 
             <div class="body" v-infinite-scroll="loadMore" :infinite-scroll-disabled="disabled">
                 <div v-for="(product,index) in goodList" :key="product.id">
-                    <HomeProList :product-data="product"></HomeProList>
+                    <RouterLink :to="`/detail/${product.id}`">
+                                <HomeProList :product-data="product"></HomeProList>
+                    </RouterLink>
                 </div>
             </div>
         </div>

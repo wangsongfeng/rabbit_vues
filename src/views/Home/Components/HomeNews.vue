@@ -17,16 +17,17 @@
          <!-- list -->
           <div class="r-indexproduct-list">
             <div v-for="(item,index) in newsList" :key="item.id">
-
-                <div class="r-product-components">
-                    <div class="r-product-img">
-                        <img :src="item.picture" alt="">
+                <RouterLink :to="`/detail/${item.id}`">
+                    <div class="r-product-components">
+                        <div class="r-product-img">
+                            <img :src="item.picture" alt="">
+                        </div>
+                        <div class="r-product-info">
+                            <h4 class="ellipsis" :title="item.name"> {{ item.name }}</h4>
+                            <WPrice size="16" :price="item.price"/>
+                        </div>
                     </div>
-                    <div class="r-product-info">
-                        <h4 class="ellipsis" :title="item.name"> {{ item.name }}</h4>
-                        <WPrice size="16" :price="item.price"/>
-                    </div>
-                </div>
+                </RouterLink>
             </div>
           </div>
     </div>

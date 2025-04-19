@@ -11,6 +11,7 @@ import CategorySub from '@/views/CategorySub/index.vue'
 import Member from '@/views/Member/index.vue'
 import UserOrder from "@/views/Member/components/UserOrder.vue";
 import UserInfo from "@/views/Member/components/UserInfo.vue";
+import GoodDetail from '@/views/GoodDetail/index.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -34,7 +35,11 @@ const router = createRouter({
                     component: CategorySub
                 },
                 {
-                    path:'member',
+                    path: '/detail/:id',
+                    component: GoodDetail,
+                },
+                {
+                    path:'/member',
                     component: Member,
                     children: [
                         {

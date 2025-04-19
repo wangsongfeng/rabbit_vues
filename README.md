@@ -21,6 +21,9 @@ HTML简单学习
     </dl>
 
 
+5、<RouterLink>包裹的标签默认当成a标签，有属性，需要设置a {display: block}防止下面包裹的页面属性css错乱
+
+
 
 
 CSS 的简单学习

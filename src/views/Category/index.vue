@@ -30,6 +30,7 @@
                             <img :src="item.picture" alt="">
                             <p> {{ item.name }} </p>
                         </RouterLink>
+                    
                     </li>
                 </ul>
               </div>
@@ -40,7 +41,9 @@
                     <h3>- {{ item.name }} -</h3>
                     <div class="product-content">
                         <div v-for="(product,index) in item.goods" :key="product.id">
-                            <HomeProList :product-data="product"></HomeProList>
+                            <RouterLink :to="`/detail/${product.id}`">
+                                <HomeProList :product-data="product"></HomeProList>
+                            </RouterLink>
                         </div>
                     </div>
                 </div>

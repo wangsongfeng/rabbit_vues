@@ -30,7 +30,9 @@
 
                      <div class="r-indexmainproduct-product-right">
                         <div v-for="(product,index) in item.goods" :key="product.id">
-                            <HomeProList :product-data="product"></HomeProList>
+                            <RouterLink :to="`/detail/${product.id}`">
+                                <HomeProList :product-data="product"></HomeProList>
+                            </RouterLink>
                         </div>
                      </div>
                   </div>

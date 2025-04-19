@@ -11,24 +11,26 @@
         <!-- 内容 -->
          <div class="spce-content">
             <div v-for="(item,index) in indexState.newSpaceData" :key="item.id">
-                <div class="r-newspec-components">
-                    <div class="newspec-top">
-                        <img v-img-lazy="item.cover" class="specimg">
-                        <div class="mask">
-                            <div class="mask-left">
-                                <p class="ellipsis" :title="item.title">{{ item.title }}</p>
-                                <p class="ellipsis" :title="item.summary">{{ item.summary }}</p>
-                            </div>
+                <RouterLink :to="`/detail/${item.id}`">
+                    <div class="r-newspec-components">
+                        <div class="newspec-top">
+                            <img v-img-lazy="item.cover" class="specimg">
+                            <div class="mask">
+                                <div class="mask-left">
+                                    <p class="ellipsis" :title="item.title">{{ item.title }}</p>
+                                    <p class="ellipsis" :title="item.summary">{{ item.summary }}</p>
+                                </div>
 
-                            <div class="mask-price">
-                                <div class="inner-price">
-                                    <WPrice :price="item.lowestPrice" autofix></WPrice>
-                                    <span>起</span>
+                                <div class="mask-price">
+                                    <div class="inner-price">
+                                        <WPrice :price="item.lowestPrice" autofix></WPrice>
+                                        <span>起</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </RouterLink>
             </div>
          </div>
     </div>
@@ -96,6 +98,10 @@ console.log(indexState.newSpaceData)
         display: flex;
         justify-content: space-between;
         padding-bottom: 20px;
+
+        a {
+            display: block;
+        }
 
         .r-newspec-components {
             width: 380px !important;

@@ -12,7 +12,9 @@
                         </div>
                         <div class="cate-product-content">
                             <div v-for="(i,index) in item.goods" :key="i.id">
-                                <IndexProduct :product-data="i"></IndexProduct>
+                                <RouterLink :to="`/detail/${i.id}`">
+                                    <IndexProduct :product-data="i" class="cate-product-conetnt-item"></IndexProduct>
+                                </RouterLink>
                             </div>
                         </div>
                     </div>
@@ -87,6 +89,10 @@ const categoryStore = useCategoryStore()
                     display: flex;
                     flex-wrap: wrap;
                     margin-top: 0px;
+
+                    a {
+                        display: block;
+                    }
                 }
             }
 

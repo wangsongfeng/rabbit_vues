@@ -72,6 +72,7 @@ const props = defineProps({
             line-clamp: 2;
             overflow: hidden;
             line-height: 1.5;
+            color: black;
         }
 
         .r-cateproduct-desc {
