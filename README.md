@@ -59,7 +59,7 @@ margin-left 和 margin-right 设置为 auto
 9、行内块元素适用vertical-align属性，图片、表单都属于行内块元素，默认的 vertical-align 是基线对齐。
 此时可以给图片、表单这些行内块元素的 vertical-align 属性设置为 middle 就可以让文字和图片垂直 居中对齐了。
 
-
+10、CsS 属性前面  >img 这样写意思是 直接子元素选择器，选择父元素下一级的 <img> 标签：
 
 
 常规报错处理

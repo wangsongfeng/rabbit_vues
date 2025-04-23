@@ -18,6 +18,8 @@ declare module 'vue' {
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElInput: typeof import('element-plus/es')['ElInput']
     ElPopconfirm: typeof import('element-plus/es')['ElPopconfirm']
+    ElSkeletonItem: typeof import('element-plus/es')['ElSkeletonItem']
+    ElTable: typeof import('element-plus/es')['ElTable']
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
@@ -25,9 +27,12 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     WBread: typeof import('./src/components/WBread.vue')['default']
+    WGoodsSel: typeof import('./src/components/WGoodsSel.vue')['default']
+    WImageView: typeof import('./src/components/WImageView.vue')['default']
     WPrice: typeof import('./src/components/WPrice.vue')['default']
   }
   export interface ComponentCustomProperties {
     vInfiniteScroll: typeof import('element-plus/es')['ElInfiniteScroll']
+    vLoading: typeof import('element-plus/es')['ElLoadingDirective']
   }
 }
