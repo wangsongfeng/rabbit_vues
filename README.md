@@ -61,6 +61,28 @@ margin-left 和 margin-right 设置为 auto
 
 10、CsS 属性前面  >img 这样写意思是 直接子元素选择器，选择父元素下一级的 <img> 标签：
 
+overflow: auto; //当内容超出容器尺寸时，会根据需要自动显示滚动条。
+padding:  0 10px;
+
+&::-webkit-scrollbar {
+   width: 10px; /* 垂直滚动条宽度 */
+   height: 10px; /* 水平滚动条高度 */
+}
+
+&::-webkit-scrollbar-track {
+   background: #f8f8f8;   /* 轨道背景色 */
+   border-radius: 2px;  /* 轨道圆角 */
+}
+
+&::-webkit-scrollbar-thumb {
+   background: #eee;  /* 滑块颜色 */
+   border-radius: 10px;  /* 滑块圆角 */
+}
+
+&::-webkit-scrollbar-thumb:hover {
+   background: #ccc;  /* 鼠标悬停时滑块颜色 */
+}
+
 
 常规报错处理
 
@@ -73,6 +95,12 @@ vue3在引入组件时报'has no default export'
     "vetur.validation.script": false
   }
 
-
   router.replace({path:'/'})
   解释 ： router.replace 不会向浏览器的历史记录中添加新记录，而是替换掉当前的历史记录。这意味着用户在导航后使用浏览器的后退按钮将不会返回到先前的页面。
+
+列表函数 .map 方法
+可以将数组里边的某个参数存起来形成另一个数组
+例如
+const list = [{name:"1",age:23},{name:"2",age:24},{name:"3",age:25}],想将数组里边的 name单独变成name数组，除了for循环外，可以用
+const nameList = list.map(item => item.name) = ["1","2","3"]
+ts 写法 list.map((item: { name: any; }) => item.name)

@@ -79,7 +79,50 @@
                         </div>
 
                         <WGoodsSel :goods="goods" @change="skuChange"></WGoodsSel>
+                        <!-- 数量增加 -->
+                         <el-input-number v-model="count" @change = countChange />
+
+                         <!-- 按钮组件 -->
+                         <div>
+                            <el-button size="large" class="btn" @click="addCart">
+                                加入购物车
+                            </el-button>
+                        </div>
                      </div>
+                </div>
+
+
+
+
+                <!-- 商品详情下面 -->
+
+                <div class="goods-footer">
+                    <!-- 左边的 -->
+                     <div class="goods-article">
+
+                        <!-- 详情 -->
+                         <div class="goods-tabs">
+                            <nav>
+                                <a>商品详情</a>
+                            </nav>
+                            <div class="goods-detail">
+                                <ul class="attrs">
+                                    <li v-for="item in goods.details.properties" :key="item.value">
+                                        <span class="dt"> {{ item.name }} </span>
+                                        <span class="dd"> {{ item.value }} </span>
+                                    </li>
+                                </ul>
+                                <!-- 图片 -->
+                                <img v-for="img in goods.details.pictures" :src="img" :key="img" alt="">
+                            </div>
+                         </div>
+                     </div>
+
+                     <!-- 右边的 -->
+                      <div class="goods-aside">
+                          <DetailHot :id="Number(route.params.id)" hot-type="1"/>
+                          <DetailHot :id="Number(route.params.id)" hot-type="2"/>
+                      </div>
                 </div>
              </div>
         </div>
@@ -97,10 +140,15 @@ import { getDetail } from '@/apis/detail';
 import WBread from '@/components/WBread.vue';
 import WGoodsSel from '@/components/WGoodsSel.vue';
 import WImageView from '@/components/WImageView.vue';
-import { ElSkeleton } from 'element-plus';
+import { useCartStore } from '@/stores/cartStore';
+import { SkuObject } from '@/utils/power_set';
+import { ElMessage, ElSkeleton } from 'element-plus';
 import { ref , onMounted} from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute } from 'vue-router';
+import DetailHot from './components/DetailHot.vue';
 
+
+const cartStore = useCartStore()
 const route = useRoute()
 
 const goods = ref({} as any)
@@ -119,9 +167,38 @@ onMounted(() => {
   getGoods()  
 })
 
+// sku 规格被操作时
+let skuObj: SkuObject = {} as SkuObject
 const skuChange = (sku: any) => {
-
+    skuObj = sku
 }
+
+// count
+const count = ref(1)
+const countChange = (count: any) => {
+    console.log(count);
+}
+
+// 添加购物车
+const addCart = () => {
+    if (skuObj.skuId) {
+        // 规则已经选择 触发action
+        cartStore.addCart({
+            id: goods.value.id, // 商品id
+            name: goods.value.name, // 商品名称
+            picture: goods.value.mainPictures[0], // 图片
+            price: goods.value.price, // 最新价格
+            count: count.value, // 商品数量
+            skuId: skuObj.skuId, // skuId
+            attrsText: skuObj.specsText, // 商品规格文本
+            selected: true // 商品是否选中
+        })
+    } else {
+        // 规则没有选择 提示用户
+        ElMessage.warning('请选择规格')
+    }
+}
+
 
 </script>
 
@@ -274,6 +351,82 @@ const skuChange = (sku: any) => {
 
         }
 
+    }
+}
+
+
+.btn {
+    margin-top: 20px;
+
+}
+
+
+.goods-footer {
+    display: flex;
+    margin-top: 20px;
+
+    .goods-article {
+        width: 940px;
+        margin-right: 20px;
+    }
+
+    .goods-aside {
+        width: 280px;
+        min-height: 1000px;
+    }
+}
+
+.goods-tabs {
+    min-height: 600px;
+    background: #fff;
+
+    nav {
+        height: 70px;
+        line-height: 70px;
+        display: flex;
+        border-bottom: 1px solid #f5f5f5;
+
+        a {
+            padding: 0 40px;
+            font-size: 18px;
+            position: relative;
+
+            >span {
+                color: $priceColor;
+                font-size: 16px;
+                margin-left: 10px;
+            }
+        }
+    }
+}
+
+.goods-detail {
+    padding: 40px;
+
+    .attrs {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+
+        li {
+            display: flex;
+            margin-bottom: 10px;
+            width: 50%;
+
+            .dt {
+                width: 100px;
+                color: #999;
+            }
+
+            .dd {
+                flex: 1;
+                color: #666;
+            }
+        }
+    }
+
+    >img {
+        width: 100%;
     }
 }
 
